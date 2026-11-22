@@ -55,6 +55,6 @@ def partition(y, n_clients, alpha=None, seed=SEED):
             cuts = (np.cumsum(props) * len(idx_c)).astype(int)[:-1]
             for i, chunk in enumerate(np.split(idx_c, cuts)):
                 parts[i] += chunk.tolist()
-        if min(len(p) for p in parts) >= 200:
+        if min(len(p) for p in parts) >= 100:
             return [np.array(p) for p in parts]
     raise RuntimeError("Could not make a balanced non-IID split; try a larger alpha.")
